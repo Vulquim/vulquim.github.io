@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c12">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Vulquim: desenvolvimento de software mobile e SaaS. Criação, técnica e objetividade para transformar ideias em soluções digitais.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Vulquim — Tecnologia que constrói o amanhã">
+  <meta property="og:description" content="Desenvolvimento de software mobile e SaaS. Da vontade de criar à construção de soluções digitais.">
+  <title>Vulquim | Tecnologia que constrói o amanhã</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <style>
+@charset "UTF-8";
+
+:root {
+  --bg: #080c12;
+  --surface: #0b1018;
+  --surface-raised: #0f1620;
+  --text: #f4f5f6;
+  --muted: #a6adb9;
+  --subtle: #828c9d;
+  --red: #e80035;
+  --red-light: #ff5267;
+  --line: rgba(190, 205, 228, .15);
+  --font: "Segoe UI", Arial, Helvetica, sans-serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; }
+body.dialog-open { overflow: hidden; }
+::selection { background: var(--red); color: white; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; }
+button, a, video { touch-action: manipulation; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+button:disabled { cursor: default; }
+button, a { outline-offset: 7px; }
+:focus-visible { outline: 2px solid var(--red-light); }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { overflow-wrap: anywhere; }
+img { display: block; max-width: 100%; height: auto; }
+svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.container { width: min(100% - 112px, 1280px); margin-inline: auto; }
+.skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 14px 20px; background: white; color: black; transform: translateY(-170%); }
+.skip-link:focus { transform: translateY(0); }
+.site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--line); background: var(--bg); }
+.header-inner { display: flex; min-height: 94px; gap: 32px; align-items: center; justify-content: space-between; }
+.brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.brand-logo { display: block; height: 40px; width: auto; }
+.main-nav { display: flex; align-items: center; gap: 34px; }
+.main-nav a { position: relative; padding-block: 18px; font-size: .9375rem; color: #c1c6cf; transition: color .18s; }
+.main-nav a::after { position: absolute; content: ""; height: 2px; background: var(--red); bottom: 7px; left: 0; width: 0; transition: width .2s; }
+.main-nav a:hover, .main-nav a:focus-visible { color: white; }
+.main-nav a:hover::after, .main-nav a[aria-current="location"]::after { width: 100%; }
+.header-note { color: var(--muted); font: .75rem var(--mono); letter-spacing: .07em; white-space: nowrap; }
+.header-note span { color: var(--red-light); margin-inline: 7px; }
+.menu-toggle { display: none; }
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero::before { content: ""; position: absolute; z-index: -1; width: 70%; right: -15%; top: 0; bottom: 0; background: radial-gradient(ellipse at 50% 48%, rgba(103, 8, 26, .14), transparent 67%); pointer-events: none; }
+.hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr); min-height: 795px; padding-top: 70px; padding-bottom: 110px; }
+.hero-copy { position: relative; z-index: 2; align-self: center; padding-bottom: 28px; }
+.eyebrow { display: flex; align-items: center; gap: 13px; font: .75rem var(--mono); font-weight: 500; letter-spacing: .12em; color: #bdc3cc; }
+.eyebrow-line { width: 24px; height: 2px; background: var(--red); }
+.hero h1 { margin-top: 27px; font-size: clamp(3.8rem, 6.5vw, 5.7rem); font-weight: 650; line-height: 1.055; letter-spacing: -.056em; }
+.hero h1 span { color: var(--red-light); }
+.hero-description { font-size: 1.0625rem; line-height: 1.8; max-width: 445px; margin-top: 29px; color: var(--muted); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 33px; }
+.button { display: inline-flex; justify-content: center; align-items: center; gap: 22px; padding: 18px 22px; min-height: 56px; border: 1px solid transparent; border-radius: 4px; font-size: .875rem; font-weight: 600; transition: background .2s, transform .2s; }
+.button-primary { background: #d80032; color: white; }
+.button-primary:hover { background: #f01443; transform: translateY(-2px); }
+.button svg { width: 20px; height: 20px; }
+.text-link { display: inline-flex; align-items: center; gap: 8px; font-size: .875rem; padding-block: 14px; color: #d6d9e0; }
+.text-link:hover { color: var(--red-light); }
+.text-link svg { width: 17px; height: 17px; }
+.hero-art { position: relative; align-self: stretch; min-width: 0; display: flex; align-items: center; justify-content: center; margin: -80px -80px -20px -8px; }
+.hero-flame { width: 100%; height: auto; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 36px rgba(239, 0, 47, .06)); }
+.motion-link { position: absolute; right: 86px; bottom: -3px; display: flex; align-items: center; gap: 12px; padding: 12px 0; background: none; border: 0; font-size: .875rem; text-align: left; }
+.motion-link small { display: block; font-size: .75rem; color: var(--muted); margin-top: 4px; }
+.play-circle { border: 1px solid rgba(190, 205, 228, .3); border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; transition: border-color .2s, background .2s; }
+.play-circle svg { width: 17px; height: 17px; fill: currentColor; stroke: none; }
+.motion-link:hover .play-circle { border-color: var(--red); background: var(--red); }
+.hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 80px; font: .75rem var(--mono); letter-spacing: .08em; color: var(--muted); }
+.hero-bottom p { line-height: 1.8; }
+.hero-bottom p span { color: var(--red-light); margin-inline: 13px; }
+.hero-bottom a { display: flex; gap: 16px; align-items: center; min-height: 44px; }
+.hero-bottom a:hover { color: white; }
+.hero-bottom svg { width: 18px; height: 18px; }
+.section { padding-block: 110px; }
+.section-label { display: flex; align-items: center; gap: 18px; font: .75rem var(--mono); letter-spacing: .1em; }
+.section-label > span { color: var(--red-light); }
+.section-label p { color: var(--muted); }
+.section-intro { display: grid; grid-template-columns: 1.4fr 1fr; align-items: end; gap: 80px; margin-top: 28px; margin-bottom: 55px; }
+h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weight: 600; line-height: 1.16; }
+.section-intro h2 span { color: var(--subtle); }
+.section-intro > p { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 405px; padding-bottom: 2px; }
+.services { background: var(--surface); border-block: 1px solid var(--line); }
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.service { position: relative; padding: 36px 40px 0; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(19, 28, 42, .65), rgba(11, 16, 24, .1)); overflow: hidden; }
+.service + .service { border-left: 0; }
+.service::before { content: ""; position: absolute; width: 50px; height: 2px; left: 40px; top: 0; background: var(--red); }
+.service-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.service-category { font: .75rem var(--mono); letter-spacing: .08em; color: var(--muted); }
+.service-icon { color: var(--red-light); width: 42px; height: 42px; stroke-width: 1.35; }
+.service-number { display: block; margin-top: 43px; margin-bottom: 14px; font: .8125rem var(--mono); color: var(--subtle); }
+.service h3 { font-size: clamp(2.5rem, 4vw, 3.75rem); letter-spacing: -.05em; line-height: 1.06; font-weight: 550; }
+.service > p { max-width: 440px; color: var(--muted); font-size: 1rem; line-height: 1.8; margin-block: 24px 36px; }
+.service-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); min-height: 73px; padding-block: 20px; color: #bbc3cf; font-size: .875rem; }
+.service-foot svg { width: 21px; height: 21px; color: var(--subtle); stroke-width: 1.3; }
+.essence { position: relative; background: radial-gradient(ellipse at 10% 35%, rgba(184, 0, 33, .08), transparent 55%); }
+.essence-intro { display: flex; align-items: end; justify-content: space-between; gap: 55px; margin-top: 28px; }
+.essence-intro > p { font-size: 1rem; color: var(--muted); line-height: 1.8; padding-bottom: 3px; }
+.name-composition { display: grid; grid-template-columns: 1fr 70px 1.28fr; align-items: start; gap: 30px; padding-top: 58px; padding-bottom: 35px; }
+.name-part { font-size: clamp(4rem, 13.75vw, 12rem); font-weight: 650; letter-spacing: -.075em; line-height: 1.1; }
+.name-vul { color: #ed0038; }
+.name-quim { color: #ebedf1; }
+.name-part span { display: block; margin-top: 21px; font: .75rem var(--mono); font-weight: 400; letter-spacing: .11em; color: var(--muted); }
+.name-plus { align-self: center; color: #7b3443; font-family: var(--mono); font-size: 3rem; line-height: 1; font-weight: 300; transform: translateY(-10px); }
+.origins { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+.origins article { border-top: 1px solid var(--line); padding-top: 28px; }
+.origins h3 { font-size: 1.25rem; font-weight: 550; letter-spacing: -.018em; }
+.origins p { margin-top: 13px; color: var(--muted); font-size: 1rem; line-height: 1.85; max-width: 490px; }
+.essence-statement { margin-top: 70px; display: flex; align-items: center; gap: 22px; padding: 27px 30px; background: rgba(135, 12, 39, .08); border-left: 2px solid var(--red); }
+.statement-marker { display: block; width: 6px; height: 6px; transform: rotate(45deg); background: var(--red-light); }
+.essence-statement p { font-size: 1.1875rem; line-height: 1.65; color: var(--muted); }
+.essence-statement br { display: none; }
+.essence-statement strong { font-weight: 550; color: var(--text); }
+.principles { background: var(--surface); border-block: 1px solid var(--line); }
+.principles-layout { display: grid; grid-template-columns: 1fr 1.18fr; gap: 95px; }
+.principles h2 { margin-top: 35px; font-size: clamp(2.9rem, 4.5vw, 4.5rem); line-height: 1.08; }
+.principles h2 span { color: var(--red-light); }
+.principles-heading > p { margin-top: 25px; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+.principles-list article { display: grid; grid-template-columns: 28px 1fr; gap: 24px; padding-block: 29px; border-bottom: 1px solid var(--line); }
+.principles-list article:first-child { border-top: 1px solid var(--line); }
+.principle-index { font: .75rem var(--mono); color: var(--red-light); padding-top: 5px; }
+.principles-list h3 { font-size: 1.25rem; font-weight: 550; line-height: 1.4; letter-spacing: -.02em; }
+.principles-list p { font-size: 1rem; line-height: 1.8; color: var(--muted); margin-top: 10px; }
+.site-footer { padding-top: 52px; }
+.footer-main { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding-bottom: 44px; }
+.footer-main > p { font-size: .9375rem; color: #c3c9d1; }
+.back-top { display: flex; align-items: center; gap: 13px; font-size: .875rem; min-height: 44px; color: var(--muted); }
+.back-top:hover { color: var(--red-light); }
+.back-top svg { width: 18px; height: 18px; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px 30px; padding-block: 27px; border-top: 1px solid var(--line); font-size: .8125rem; color: var(--subtle); line-height: 1.6; }
+.footer-bottom > span { font: .75rem var(--mono); letter-spacing: .06em; }
+.film-dialog { width: min(960px, calc(100% - 40px)); max-height: calc(100dvh - 40px); margin: auto; padding: 0; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 24px 140px #000; overflow-y: auto; }
+.film-dialog::backdrop { background: rgba(0, 0, 0, .87); backdrop-filter: blur(8px); }
+.film-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 18px 13px 24px; }
+.film-header h2 { font-size: 1rem; letter-spacing: -.01em; font-weight: 500; }
+.film-close { display: grid; place-items: center; background: transparent; border: 1px solid var(--line); border-radius: 50%; width: 44px; height: 44px; flex-shrink: 0; }
+.film-close:hover { background: #222833; }
+.film-close svg { width: 20px; height: 20px; }
+.film-dialog video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: black; }
+.film-caption { padding: 18px 24px; font-size: .875rem; line-height: 1.6; color: var(--muted); }
+
+@media (min-width: 1600px) {
+  .hero-inner { min-height: 875px; }
+  .hero-art { margin-right: -50px; margin-left: -25px; }
+}
+@media (max-width: 1150px) {
+  .container { width: calc(100% - 72px); }
+  .header-note { display: none; }
+  .main-nav { gap: 25px; }
+  .hero-inner { min-height: 750px; padding-top: 72px; }
+  .hero-art { margin-right: -45px; margin-left: -45px; }
+  .hero h1 { font-size: clamp(3.4rem, 6.5vw, 5.1rem); }
+  .hero-description { max-width: 390px; }
+  .hero-actions { gap: 5px 18px; }
+  .motion-link { right: 48px; bottom: 4px; }
+  .section-intro { gap: 45px; grid-template-columns: 1.2fr 1fr; }
+  .section { padding-block: 90px; }
+  .service { padding-inline: 30px; }
+  .service::before { left: 30px; }
+  .origins { gap: 70px; }
+  .name-composition { gap: 18px; grid-template-columns: 1fr 45px 1.28fr; }
+  .principles-layout { gap: 55px; }
+  .footer-main { flex-wrap: wrap; gap: 26px; }
+}
+@media (max-width: 760px) {
+  :root { scroll-padding-top: 30px; }
+  .container { width: calc(100% - 40px); }
+  .header-inner { min-height: 78px; gap: 16px; flex-wrap: wrap; }
+  .brand { gap: 7px; }
+  .brand-logo { height: 32px; }
+  .js .menu-toggle { display: inline-flex; gap: 12px; align-items: center; justify-content: center; border: 1px solid var(--line); padding: 9px 12px; background: none; border-radius: 3px; min-height: 44px; font-size: .875rem; }
+  .menu-lines { position: relative; display: block; width: 18px; height: 14px; }
+  .menu-lines::before, .menu-lines::after { content: ""; position: absolute; width: 18px; height: 1px; background: var(--text); left: 0; transition: transform .2s, top .2s; }
+  .menu-lines::before { top: 3px; }
+  .menu-lines::after { top: 10px; }
+  .menu-toggle[aria-expanded="true"] .menu-lines::before { top: 7px; transform: rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] .menu-lines::after { top: 7px; transform: rotate(-45deg); }
+  .main-nav { width: 100%; flex-direction: column; gap: 0; align-items: stretch; padding-bottom: 20px; }
+  .main-nav a { font-size: 1rem; padding-block: 15px; border-top: 1px solid var(--line); }
+  .main-nav a::after { display: none; }
+  .js .main-nav:not(.is-open) { display: none; }
+  .hero-inner { grid-template-columns: 1fr; min-height: 0; padding-top: 48px; padding-bottom: 75px; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-eyebrow { font-size: .75rem; }
+  .hero h1 { font-size: clamp(3.15rem, 10.9vw, 4.8rem); margin-top: 23px; line-height: 1.04; }
+  .hero-description { font-size: 1rem; line-height: 1.8; max-width: 460px; margin-top: 25px; }
+  .hero-actions { margin-top: 27px; gap: 8px 18px; }
+  .button { padding: 16px 19px; gap: 18px; }
+  .hero-art { margin: 2px auto 35px; max-width: 455px; width: 100%; min-height: 0; }
+  .hero-flame { width: 100%; }
+  .motion-link { right: 0; bottom: -24px; font-size: .8125rem; }
+  .motion-link small { font-size: .75rem; }
+  .hero-bottom { min-height: 73px; gap: 12px; font-size: .75rem; letter-spacing: 0; }
+  .hero-bottom p span { margin-inline: 5px; }
+  .hero-bottom a { gap: 5px; }
+  .section { padding-block: 70px; }
+  .section-label { gap: 14px; letter-spacing: .08em; }
+  .section-intro { display: block; margin-top: 24px; margin-bottom: 33px; }
+  h2 { font-size: clamp(1.95rem, 6.5vw, 2.8rem); }
+  .section-intro > p { margin-top: 21px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service { padding: 27px 26px 0; }
+  .service + .service { border-left: 1px solid var(--line); border-top: 0; }
+  .service::before { left: 26px; }
+  .service-category { line-height: 1.65; max-width: 230px; }
+  .service-icon { width: 38px; height: 38px; }
+  .service-number { margin-top: 29px; }
+  .service h3 { font-size: 3rem; }
+  .service > p { margin-block: 21px 27px; }
+  .service-foot { min-height: 66px; }
+  .essence-intro { display: block; margin-top: 24px; }
+  .essence-intro > p { margin-top: 22px; }
+  .name-composition { grid-template-columns: 1fr 19px 1.3fr; gap: 8px; padding-top: 35px; padding-bottom: 30px; }
+  .name-part { font-size: clamp(2.9rem, 13.65vw, 6rem); letter-spacing: -.075em; }
+  .name-part span { font-size: .75rem; margin-top: 18px; letter-spacing: .025em; }
+  .name-plus { font-size: 1.6rem; transform: translateY(-15px); }
+  .origins { grid-template-columns: 1fr; gap: 28px; }
+  .origins article { padding-top: 25px; }
+  .origins h3 { font-size: 1.1875rem; }
+  .essence-statement { margin-top: 35px; padding: 22px 20px; gap: 14px; }
+  .essence-statement p { font-size: 1rem; }
+  .essence-statement br { display: block; }
+  .statement-marker { flex-shrink: 0; }
+  .principles-layout { grid-template-columns: 1fr; gap: 35px; }
+  .principles h2 { font-size: 3.2rem; margin-top: 28px; }
+  .principles-heading > p { margin-top: 23px; }
+  .principles-list article { padding-block: 25px; gap: 16px; grid-template-columns: 22px 1fr; }
+  .principles-list h3 { font-size: 1.1875rem; }
+  .site-footer { padding-top: 38px; }
+  .footer-main { display: grid; grid-template-columns: 1fr; gap: 20px; padding-bottom: 29px; }
+  .back-top { justify-self: start; }
+  .footer-bottom { flex-direction: column; align-items: start; gap: 8px; padding-block: 22px 30px; }
+  .footer-bottom > span { margin-top: 7px; }
+  .film-dialog { width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
+  .film-header { padding: 10px 12px 10px 18px; }
+  .film-caption { padding: 16px 18px; }
+}
+@media (max-width: 370px) {
+  .container { width: calc(100% - 32px); }
+  .menu-toggle-text { display: none; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-bottom { align-items: center; }
+  .hero-bottom p { max-width: 230px; }
+  .hero-bottom a { font-size: 0; }
+  .hero-bottom a svg { width: 22px; height: 22px; }
+  .service { padding-inline: 21px; }
+  .service-foot { font-size: .875rem; }
+  .name-part { font-size: 12.6vw; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy { animation: enter .65s ease-out both; }
+  .hero-flame { animation: flame-enter 1s ease-out both; }
+  @keyframes enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes flame-enter { from { opacity: 0; } to { opacity: 1; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media print {
+  :root, body { background: white; color: black; }
+  .container { width: 100%; }
+  .site-header, .hero-art, .hero-actions, .hero-bottom, .film-dialog, .back-top { display: none; }
+  .hero-inner, .principles-layout, .section-intro, .essence-intro { display: block; min-height: 0; padding: 0; }
+  .section, .hero { padding-block: 25px; background: white; }
+  .hero h1 { font-size: 3.3rem; }
+  p, .section-intro h2 span, .name-quim, .service h3, .principles h2 { color: black !important; }
+  .service, .essence-statement { background: white; }
+  .name-part { font-size: 5rem; }
+  .service h3 { font-size: 2rem; }
+  .brand-logo { filter: brightness(0); }
+}
+
+</style>
+  
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Vulquim, início">
+        <img class="brand-logo" src="vulquim-logo-white.png" alt="Vulquim" width="900" height="369">
+      </a>
+      <button class="menu-toggle" type="button" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
+        <span class="menu-toggle-text">Menu</span><span class="menu-lines" aria-hidden="true"></span>
+      </button>
+      <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
+        <a href="#atuacao">O que criamos</a>
+        <a href="#essencia">A Vulquim</a>
+        <a href="#principios">Como pensamos</a>
+      </nav>
+      <span class="header-note">MOBILE <span aria-hidden="true">/</span> SAAS</span>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> IDEIAS EM CONSTRUÇÃO</p>
+          <h1 id="hero-title">Tecnologia<br>que constrói<br>o <span>amanhã.</span></h1>
+          <p class="hero-description">Desenvolvemos software mobile e SaaS que transforma necessidades reais em soluções para o dia a dia.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#atuacao">Conheça o que criamos <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a class="text-link" href="#essencia">A essência da Vulquim <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img class="hero-flame" src="vulquim-asset-3.png" alt="Símbolo da Vulquim: uma chama vermelha formada por fitas entrelaçadas e conexões de circuitos." width="1271" height="1238" fetchpriority="high" decoding="async">
+          <a class="motion-link" href="vulquim-asset-4.mp4" data-open-film>
+            <span class="play-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6Z"/></svg></span>
+            <span>A marca em movimento<small>Assista à animação</small></span>
+          </a>
+        </div>
+        <div class="hero-bottom">
+          <p>CRIAÇÃO <span aria-hidden="true">/</span> TÉCNICA <span aria-hidden="true">/</span> TRANSFORMAÇÃO</p>
+          <a href="#atuacao" aria-label="Explore o que criamos">EXPLORE <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="atuacao" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-label"><span>01</span><p>O QUE CRIAMOS</p></div>
+        <div class="section-intro">
+          <h2 id="services-title">Da ideia à vida real.<br><span>É aqui que acontece.</span></h2>
+          <p>Tecnologia ganha sentido quando resolve uma necessidade. Construímos a partir dela, com clareza sobre o que cada solução precisa fazer.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service">
+            <div class="service-top"><span class="service-category">NA PALMA DA MÃO</span><svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48"><rect x="13" y="5" width="22" height="38" rx="4"/><path d="M20 10h8M21 37h6"/></svg></div>
+            <span class="service-number" aria-hidden="true">01 /</span>
+            <h3>Aplicativos<br>mobile.</h3>
+            <p>Software que acompanha as pessoas. Aplicativos voltados a facilitar tarefas, organizar rotinas e tornar o dia a dia mais prático.</p>
+            <div class="service-foot"><span>Funcionalidade em cada toque</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-14-2 14"/></svg></div>
+          </article>
+          <article class="service">
+            <div class="service-top"><span class="service-category">CONECTADO AO SEU NEGÓCIO</span><svg class="service-icon" aria-hidden="true" viewBox="0 0 48 48"><rect x="5" y="8" width="38" height="31" rx="3"/><path d="M5 17h38M11 12.5h1m4 0h1M12 24h10m-10 7h17m5-7h2v7h-2"/></svg></div>
+            <span class="service-number" aria-hidden="true">02 /</span>
+            <h3>Plataformas<br>SaaS.</h3>
+            <p>Soluções acessíveis pela web para organizar processos e conectar informações. Software pensado para acompanhar a evolução de cada negócio.</p>
+            <div class="service-foot"><span>Mais clareza para cada processo</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-14-2 14"/></svg></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section essence" id="essencia" aria-labelledby="essence-title">
+      <div class="container">
+        <div class="section-label"><span>02</span><p>A ESSÊNCIA DA VULQUIM</p></div>
+        <div class="essence-intro">
+          <h2 id="essence-title">Criação é parte<br>do nosso nome.</h2>
+          <p>Duas origens se encontram.<br>Uma vontade de construir nasce.</p>
+        </div>
+        <div class="name-composition" aria-label="VUL, de Vulcano, mais QUIM, de Musquim">
+          <div class="name-part name-vul" aria-hidden="true">VUL<span>DE VULCANO</span></div>
+          <span class="name-plus" aria-hidden="true">+</span>
+          <div class="name-part name-quim" aria-hidden="true">QUIM<span>DE MUSQUIM</span></div>
+        </div>
+        <div class="origins">
+          <article>
+            <h3>O fogo que transforma.</h3>
+            <p>Vulcano, deus romano do fogo e das forjas, inspira a energia criativa da Vulquim. A transformação da matéria em algo novo, guiada pela técnica e pela imaginação.</p>
+          </article>
+          <article>
+            <h3>Uma assinatura pessoal.</h3>
+            <p>Musquim, sobrenome de Celo, dá origem à segunda parte do nome. É a conexão da marca com sua história e com quem deu o primeiro passo para criá-la.</p>
+          </article>
+        </div>
+        <div class="essence-statement"><span class="statement-marker" aria-hidden="true"></span><p>O fogo inspira. A técnica dá forma.<br><strong>A construção é o que nos move.</strong></p></div>
+      </div>
+    </section>
+
+    <section class="section principles" id="principios" aria-labelledby="principles-title">
+      <div class="container principles-layout">
+        <div class="principles-heading">
+          <div class="section-label"><span>03</span><p>COMO PENSAMOS</p></div>
+          <h2 id="principles-title">Imaginar.<br>Simplificar.<br><span>Construir.</span></h2>
+          <p>A forja é a inspiração.<br>O software é a nossa forma de criar.</p>
+        </div>
+        <div class="principles-list">
+          <article><span class="principle-index">01</span><div><h3>Inovação com propósito.</h3><p>Encontrar novas maneiras de resolver problemas reais. Cada ideia começa com uma necessidade que merece atenção.</p></div></article>
+          <article><span class="principle-index">02</span><div><h3>Objetividade em cada escolha.</h3><p>Entender o essencial e dar a ele uma forma clara. Menos complicação para quem usa, mais sentido no que construímos.</p></div></article>
+          <article><span class="principle-index">03</span><div><h3>Construção contínua.</h3><p>Transformar ideias em software e aprender com o uso. Criar também é revisar, aperfeiçoar e seguir em frente.</p></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <a class="brand" href="#inicio" aria-label="Vulquim, voltar ao início"><img class="brand-logo" src="vulquim-logo-white.png" alt="Vulquim" width="900" height="369" loading="lazy"></a>
+        <p>Tecnologia que constrói o amanhã.</p>
+        <a class="back-top" href="#inicio">Voltar ao topo <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a>
+      </div>
+      <div class="footer-bottom"><p>© 2026 Vulquim.</p><p>Desenvolvimento de software mobile e SaaS.</p><span>FEITO PARA CONSTRUIR.</span></div>
+    </div>
+  </footer>
+
+  <dialog class="film-dialog" id="brand-film" aria-labelledby="film-title">
+    <div class="film-header"><h2 id="film-title">A Vulquim em movimento</h2><button class="film-close" type="button" aria-label="Fechar vídeo"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
+    <video id="film" controls playsinline muted preload="none" aria-label="Animação da identidade visual da Vulquim, com uma chama vermelha e conexões de circuitos"><source src="vulquim-asset-4.mp4" type="video/mp4">Seu navegador não consegue reproduzir este vídeo.</video>
+    <p class="film-caption">O fogo, a criação e a transformação na identidade da Vulquim.</p>
+  </dialog>
+<script>
+(() => {
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  const menuButton = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.main-nav');
+  const mobile = window.matchMedia('(max-width: 760px)');
+
+  function setMenu(open, returnFocus = false) {
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    menu.classList.toggle('is-open', open);
+    if (returnFocus) menuButton.focus();
+  }
+
+  menuButton.addEventListener('click', () => {
+    setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+  });
+
+  menu.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (!link || !mobile.matches) return;
+    const target = document.querySelector(link.getAttribute('href'));
+    setMenu(false);
+    if (target) {
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+      target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+      setMenu(false, true);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (mobile.matches && !event.target.closest('.site-header')) setMenu(false);
+  });
+  mobile.addEventListener('change', () => setMenu(false));
+
+  const dialog = document.getElementById('brand-film');
+  const video = document.getElementById('film');
+  const openVideo = document.querySelector('[data-open-film]');
+  const closeVideo = document.querySelector('.film-close');
+
+  openVideo.addEventListener('click', (event) => {
+    if (typeof dialog.showModal !== 'function') {
+      return;
+    }
+    event.preventDefault();
+    dialog.showModal();
+    document.body.classList.add('dialog-open');
+    closeVideo.focus();
+    video.play().catch(() => {
+      // Native controls remain available when automatic playback is blocked.
+    });
+  });
+
+  closeVideo.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target !== dialog) return;
+    const box = dialog.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+  });
+
+  dialog.addEventListener('close', () => {
+    video.pause();
+    document.body.classList.remove('dialog-open');
+    openVideo.focus({ preventScroll: true });
+  });
+
+  if ('IntersectionObserver' in window) {
+    const navLinks = Array.from(menu.querySelectorAll('a'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
+    document.querySelectorAll('main > section').forEach((section) => observer.observe(section));
+  }
+})();
+
+</script>
+</body>
+</html>
