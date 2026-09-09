@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080c12">
+  <meta name="theme-color" content="#071a2f">
   <meta name="color-scheme" content="dark">
   <meta name="description" content="Vulquim: desenvolvimento de software mobile e SaaS. Criação, técnica e objetividade para transformar ideias em soluções digitais.">
   <meta property="og:type" content="website">
@@ -20,15 +20,15 @@
 @charset "UTF-8";
 
 :root {
-  --bg: #080c12;
-  --surface: #0b1018;
-  --surface-raised: #0f1620;
+  --bg: #071a2f;
+  --surface: #0a223b;
+  --surface-raised: #102d4a;
   --text: #f4f5f6;
   --muted: #a6adb9;
   --subtle: #828c9d;
   --red: #e80035;
   --red-light: #ff5267;
-  --line: rgba(190, 205, 228, .15);
+  --line: rgba(190, 215, 241, .18);
   --font: "Segoe UI", Arial, Helvetica, sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-family: var(--font);
@@ -61,18 +61,19 @@ svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width:
 .skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 14px 20px; background: white; color: black; transform: translateY(-170%); }
 .skip-link:focus { transform: translateY(0); }
 .site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--line); background: var(--bg); }
-.header-inner { display: flex; min-height: 94px; gap: 32px; align-items: center; justify-content: space-between; }
+.header-inner { display: flex; min-height: 152px; gap: 32px; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .brand-logo { display: block; height: 40px; width: auto; }
+.site-header .brand-logo { height: 112px; }
 .main-nav { display: flex; align-items: center; gap: 34px; }
 .main-nav a { position: relative; padding-block: 18px; font-size: .9375rem; color: #c1c6cf; transition: color .18s; }
-.main-nav a::after { position: absolute; content: ""; height: 2px; background: var(--red); bottom: 7px; left: 0; width: 0; transition: width .2s; }
+.main-nav a::after { position: absolute; content: ""; height: 2px; background: var(--red); bottom: 7px; left: 0; width: 100%; transform: scaleX(0); transform-origin: left; transition: transform .2s; }
 .main-nav a:hover, .main-nav a:focus-visible { color: white; }
-.main-nav a:hover::after, .main-nav a[aria-current="location"]::after { width: 100%; }
+.main-nav a:hover::after, .main-nav a[aria-current="location"]::after { transform: scaleX(1); }
 .header-note { color: var(--muted); font: .75rem var(--mono); letter-spacing: .07em; white-space: nowrap; }
 .header-note span { color: var(--red-light); margin-inline: 7px; }
 .menu-toggle { display: none; }
-.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero { position: relative; overflow: hidden; isolation: isolate; background: var(--bg); }
 .hero::before { content: ""; position: absolute; z-index: -1; width: 70%; right: -15%; top: 0; bottom: 0; background: radial-gradient(ellipse at 50% 48%, rgba(103, 8, 26, .14), transparent 67%); pointer-events: none; }
 .hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr); min-height: 795px; padding-top: 70px; padding-bottom: 110px; }
 .hero-copy { position: relative; z-index: 2; align-self: center; padding-bottom: 28px; }
@@ -90,7 +91,7 @@ svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width:
 .text-link:hover { color: var(--red-light); }
 .text-link svg { width: 17px; height: 17px; }
 .hero-art { position: relative; align-self: stretch; min-width: 0; display: flex; align-items: center; justify-content: center; margin: -80px -80px -20px -8px; }
-.hero-flame { width: 100%; height: auto; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 36px rgba(239, 0, 47, .06)); }
+.hero-flame { width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 0 36px rgba(239, 0, 47, .06)); }
 .motion-link { position: absolute; right: 86px; bottom: -3px; display: flex; align-items: center; gap: 12px; padding: 12px 0; background: none; border: 0; font-size: .875rem; text-align: left; }
 .motion-link small { display: block; font-size: .75rem; color: var(--muted); margin-top: 4px; }
 .play-circle { border: 1px solid rgba(190, 205, 228, .3); border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; transition: border-color .2s, background .2s; }
@@ -195,9 +196,9 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 @media (max-width: 760px) {
   :root { scroll-padding-top: 30px; }
   .container { width: calc(100% - 40px); }
-  .header-inner { min-height: 78px; gap: 16px; flex-wrap: wrap; }
+  .header-inner { min-height: 118px; gap: 16px; flex-wrap: wrap; }
   .brand { gap: 7px; }
-  .brand-logo { height: 32px; }
+  .site-header .brand-logo { height: 80px; }
   .js .menu-toggle { display: inline-flex; gap: 12px; align-items: center; justify-content: center; border: 1px solid var(--line); padding: 9px 12px; background: none; border-radius: 3px; min-height: 44px; font-size: .875rem; }
   .menu-lines { position: relative; display: block; width: 18px; height: 14px; }
   .menu-lines::before, .menu-lines::after { content: ""; position: absolute; width: 18px; height: 1px; background: var(--text); left: 0; transition: transform .2s, top .2s; }
@@ -267,6 +268,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 }
 @media (max-width: 370px) {
   .container { width: calc(100% - 32px); }
+  .site-header .brand-logo { height: 56px; }
   .menu-toggle-text { display: none; }
   .hero h1 { font-size: 2.8rem; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
@@ -317,8 +319,8 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
         <span class="menu-toggle-text">Menu</span><span class="menu-lines" aria-hidden="true"></span>
       </button>
       <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
-        <a href="#atuacao">O que criamos</a>
         <a href="#essencia">A Vulquim</a>
+        <a href="#atuacao">O que criamos</a>
         <a href="#principios">Como pensamos</a>
       </nav>
       <span class="header-note">MOBILE <span aria-hidden="true">/</span> SAAS</span>
@@ -338,7 +340,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
           </div>
         </div>
         <div class="hero-art">
-          <img class="hero-flame" src="vulquim-asset-3.png" alt="Símbolo da Vulquim: uma chama vermelha formada por fitas entrelaçadas e conexões de circuitos." width="1271" height="1238" fetchpriority="high" decoding="async">
+          <img class="hero-flame" src="vulquim-asset-3-cutout-final.png" alt="Símbolo da Vulquim: uma chama vermelha formada por fitas entrelaçadas e conexões de circuitos." width="1271" height="1237" fetchpriority="high" decoding="async">
           <a class="motion-link" href="vulquim-asset-4.mp4" data-open-film>
             <span class="play-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6Z"/></svg></span>
             <span>A marca em movimento<small>Assista à animação</small></span>
@@ -396,7 +398,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
           </article>
           <article>
             <h3>Uma assinatura pessoal.</h3>
-            <p>Musquim, sobrenome de Celo, dá origem à segunda parte do nome. É a conexão da marca com sua história e com quem deu o primeiro passo para criá-la.</p>
+            <p>Musquim, sobrenome do Marcelo (Responsável pela Vulquim), dá origem à segunda parte do nome. É a conexão da marca com sua história e com quem deu o primeiro passo para criá-la.</p>
           </article>
         </div>
         <div class="essence-statement"><span class="statement-marker" aria-hidden="true"></span><p>O fogo inspira. A técnica dá forma.<br><strong>A construção é o que nos move.</strong></p></div>
@@ -422,7 +424,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
   <footer class="site-footer">
     <div class="container">
       <div class="footer-main">
-        <a class="brand" href="#inicio" aria-label="Vulquim, voltar ao início"><img class="brand-logo" src="vulquim-logo-white.png" alt="Vulquim" width="900" height="369" loading="lazy"></a>
+        <a class="brand" href="#inicio" aria-label="Vulquim, voltar ao início"><img class="brand-logo" src="vulquim-logo-white.png" alt="Vulquim" width="1500" height="369" loading="lazy"></a>
         <p>Tecnologia que constrói o amanhã.</p>
         <a class="back-top" href="#inicio">Voltar ao topo <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a>
       </div>
