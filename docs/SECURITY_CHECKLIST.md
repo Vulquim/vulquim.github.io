@@ -20,10 +20,10 @@
 | Item | Evidência diária | Estado atual (10/09/2026) |
 |---|---|---|
 | Diretório interno correto | `git rev-parse --show-toplevel` e `git status --short --branch` | `OK` para o checkout; existem arquivos locais não rastreados preexistentes. |
-| Commit local versus remoto | `git rev-parse HEAD` e `git ls-remote origin HEAD` | `OK` antes da correção: ambos em `344dafd...`. Revalidar após cada publicação. |
+| Commit local versus remoto | `git rev-parse HEAD` e `git ls-remote origin HEAD` | `OK` pós-publicação: ambos em `4ae48a2...`. Revalidar após cada publicação. |
 | Alterações locais | `git status --short`; separar arquivos do ciclo dos arquivos do usuário | `ATENÇÃO`: nunca apagar, resetar ou incluir arquivos fora do escopo. |
 | Repositório remoto | API/console do GitHub: nome, visibilidade, branch padrão, Pages e último push | `ATENÇÃO`: remoto público e Pages habilitado; revisar exposição de cada arquivo. |
-| Conteúdo publicado versus remoto | comparar hash/ETag/`Last-Modified` da página publicada com o commit remoto | `NÃO VERIFICADO` até repetir depois do deploy e da propagação do cache. |
+| Conteúdo publicado versus remoto | comparar hash/ETag/`Last-Modified` da página publicada com o commit remoto | `OK` nesta rodada: HTML publicado contém o banner e o gate de consentimento do commit `4ae48a2`. Revalidar após cada deploy. |
 | Domínio canônico | conferir `CNAME`, homepage do GitHub, DNS e redirects | `ATENÇÃO`: `CNAME` usa `www.vulquim.com.br`; o README ainda menciona `vulquim.com.br`. |
 
 ## 2. Auditoria online do domínio
@@ -57,7 +57,7 @@ Executar para o domínio canônico, o domínio alternativo e o endereço GitHub 
 | Source maps/debug | procurar `.map`, banners, stack trace, logs e flags de debug | `OK` no checkout revisado. |
 | Dependências/supply chain | procurar `package.json`, lockfiles, workflows e scripts de build | `NÃO APLICÁVEL`: site sem build e sem dependências versionadas. |
 | Headers no código | procurar CSP, HSTS, X-Frame-Options, nosniff, Referrer-Policy e Permissions-Policy | `ATENÇÃO`: não há configuração no repositório; confirmar na publicação. |
-| Analytics | verificar carregamento, consentimento, opt-out, finalidade, retenção e PII | `CORRIGIDO` localmente nesta rodada: script passou a ser carregado após aceitação. Confirmar após publicação. |
+| Analytics | verificar carregamento, consentimento, opt-out, finalidade, retenção e PII | `CORRIGIDO`: teste local e online confirmaram zero request antes da escolha, zero após recusa e carregamento somente após aceite. Finalidade, retenção e base legal continuam dependentes da governança operacional. |
 | LGPD | finalidade, base legal, transparência, minimização, retenção, opt-out e operador | `NÃO VERIFICADO`: a parte operacional/jurídica não está no checkout. |
 | ECA | verificar se há coleta ou recurso destinado/acessível a crianças/adolescentes | `NÃO APLICÁVEL` ao conteúdo atual sem formulário; reavaliar se houver coleta ou perfilamento. |
 
