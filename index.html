@@ -1,15 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K3H3D2QZF4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-K3H3D2QZF4');
-</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071a2f">
@@ -275,6 +266,20 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
   .film-header { padding: 10px 12px 10px 18px; }
   .film-caption { padding: 16px 18px; }
 }
+.consent-banner { position: fixed; right: 20px; bottom: 20px; z-index: 200; width: min(520px, calc(100% - 40px)); padding: 20px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface-raised); box-shadow: 0 18px 60px rgba(0, 0, 0, .4); }
+.consent-banner[hidden] { display: none; }
+.consent-banner p { margin: 0; color: var(--text); font-size: .9rem; line-height: 1.6; }
+.consent-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.consent-actions button, .privacy-preferences { border: 1px solid var(--line-strong); border-radius: 4px; padding: 10px 14px; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
+.consent-actions button:hover, .consent-actions button:focus-visible, .privacy-preferences:hover, .privacy-preferences:focus-visible { border-color: var(--red-light); color: var(--red-light); }
+.consent-actions .consent-accept { border-color: var(--red); background: var(--red); color: white; }
+.consent-actions .consent-accept:hover, .consent-actions .consent-accept:focus-visible { border-color: var(--red-light); background: var(--red-light); color: white; }
+.privacy-preferences { padding: 0; border: 0; color: var(--muted); font-size: .8rem; }
+@media (max-width: 600px) {
+  .consent-banner { right: 12px; bottom: 12px; width: calc(100% - 24px); padding: 16px; }
+  .consent-actions { flex-direction: column-reverse; }
+  .consent-actions button { width: 100%; }
+}
 @media (max-width: 370px) {
   .container { width: calc(100% - 32px); }
   .site-header .brand-logo { height: 56px; }
@@ -302,7 +307,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 @media print {
   :root, body { background: white; color: black; }
   .container { width: 100%; }
-  .site-header, .hero-art, .hero-actions, .hero-bottom, .film-dialog, .back-top { display: none; }
+  .site-header, .hero-art, .hero-actions, .hero-bottom, .film-dialog, .back-top, .consent-banner, .privacy-preferences { display: none; }
   .hero-inner, .principles-layout, .section-intro, .essence-intro { display: block; min-height: 0; padding: 0; }
   .section, .hero { padding-block: 25px; background: white; }
   .hero h1 { font-size: 3.3rem; }
@@ -437,7 +442,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
         <p>Tecnologia que constrói o amanhã.</p>
         <a class="back-top" href="#inicio">Voltar ao topo <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a>
       </div>
-      <div class="footer-bottom"><p>© 2026 Vulquim.</p><p>Desenvolvimento de software mobile e SaaS.</p><span>FEITO PARA CONSTRUIR.</span></div>
+      <div class="footer-bottom"><p>© 2026 Vulquim.</p><p>Desenvolvimento de software mobile e SaaS.</p><button class="privacy-preferences" id="privacy-preferences" type="button">Preferências de privacidade</button><span>FEITO PARA CONSTRUIR.</span></div>
     </div>
   </footer>
 
@@ -446,6 +451,13 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
     <video id="film" controls playsinline muted preload="none" aria-label="Animação da identidade visual da Vulquim, com uma chama vermelha e conexões de circuitos"><source src="vulquim-asset-4.mp4" type="video/mp4">Seu navegador não consegue reproduzir este vídeo.</video>
     <p class="film-caption">O fogo, a criação e a transformação na identidade da Vulquim.</p>
   </dialog>
+  <section class="consent-banner" id="analytics-consent" aria-labelledby="analytics-consent-title" role="dialog" hidden>
+    <p id="analytics-consent-title"><strong>Preferências de privacidade</strong><br>Usamos uma ferramenta de análise para entender o uso do site. Você escolhe se ela será carregada.</p>
+    <div class="consent-actions">
+      <button type="button" data-analytics-consent="denied">Recusar análise</button>
+      <button class="consent-accept" type="button" data-analytics-consent="accepted">Aceitar análise</button>
+    </div>
+  </section>
 <script>
 (() => {
   'use strict';
@@ -493,6 +505,71 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
   const video = document.getElementById('film');
   const openVideo = document.querySelector('[data-open-film]');
   const closeVideo = document.querySelector('.film-close');
+
+  const analyticsId = 'G-K3H3D2QZF4';
+  const analyticsConsentKey = 'vulquim-analytics-consent';
+  const consentBanner = document.getElementById('analytics-consent');
+  const privacyPreferences = document.getElementById('privacy-preferences');
+  const consentButtons = consentBanner.querySelectorAll('[data-analytics-consent]');
+
+  function readAnalyticsConsent() {
+    try {
+      return window.localStorage.getItem(analyticsConsentKey);
+    } catch {
+      return null;
+    }
+  }
+
+  function saveAnalyticsConsent(value) {
+    try {
+      window.localStorage.setItem(analyticsConsentKey, value);
+    } catch {
+      // A blocked storage still leaves the current choice effective.
+    }
+  }
+
+  function loadAnalytics() {
+    if (window.__vulquimAnalyticsLoaded) return;
+    window.__vulquimAnalyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', analyticsId, { anonymize_ip: true });
+    const analyticsScript = document.createElement('script');
+    analyticsScript.async = true;
+    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`;
+    document.head.appendChild(analyticsScript);
+  }
+
+  function showConsentBanner() {
+    consentBanner.hidden = false;
+  }
+
+  function hideConsentBanner() {
+    consentBanner.hidden = true;
+  }
+
+  function applyAnalyticsConsent(value) {
+    saveAnalyticsConsent(value);
+    if (value === 'accepted') {
+      loadAnalytics();
+    } else if (window.__vulquimAnalyticsLoaded && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+    hideConsentBanner();
+  }
+
+  consentButtons.forEach((button) => {
+    button.addEventListener('click', () => applyAnalyticsConsent(button.dataset.analyticsConsent));
+  });
+  privacyPreferences.addEventListener('click', () => {
+    showConsentBanner();
+    consentButtons[0].focus();
+  });
+
+  const analyticsConsent = readAnalyticsConsent();
+  if (analyticsConsent === 'accepted') loadAnalytics();
+  else if (analyticsConsent !== 'denied') showConsentBanner();
 
   openVideo.addEventListener('click', (event) => {
     if (typeof dialog.showModal !== 'function') {
