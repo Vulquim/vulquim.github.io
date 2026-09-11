@@ -16,6 +16,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="projetos.css">
   <style>
 @charset "UTF-8";
 
@@ -209,7 +210,8 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
   .main-nav { width: 100%; flex-direction: column; gap: 0; align-items: stretch; padding-bottom: 20px; }
   .main-nav a { font-size: 1rem; padding-block: 15px; border-top: 1px solid var(--line); }
   .main-nav a::after { display: none; }
-  .js .main-nav:not(.is-open) { display: none; }
+  .js .main-nav { max-height: 0; opacity: 0; overflow: hidden; visibility: hidden; transform: translateY(-12px); transition: max-height .42s cubic-bezier(.22, 1, .36, 1), opacity .24s ease, transform .42s cubic-bezier(.22, 1, .36, 1), visibility 0s linear .42s; }
+  .js .main-nav.is-open { max-height: 560px; opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
   .hero-inner { grid-template-columns: 1fr; min-height: 0; padding-top: 48px; padding-bottom: 75px; }
   .hero-copy { padding-bottom: 0; }
   .hero-eyebrow { font-size: .75rem; }
@@ -275,6 +277,22 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 .consent-actions .consent-accept { border-color: var(--red); background: var(--red); color: white; }
 .consent-actions .consent-accept:hover, .consent-actions .consent-accept:focus-visible { border-color: var(--red-light); background: var(--red-light); color: white; }
 .privacy-preferences { padding: 0; border: 0; color: var(--muted); font-size: .8rem; }
+
+@media (hover: hover) and (pointer: fine) {
+  .service { transition: transform .3s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, background .25s ease; }
+  .service:hover { z-index: 1; border-color: rgba(255, 82, 103, .48); background: linear-gradient(145deg, rgba(39, 29, 43, .82), rgba(15, 20, 29, .32)); transform: translateY(-6px); }
+  .service:hover .service-icon { transform: translateY(-2px) scale(1.06); }
+  .service-icon { transition: transform .3s cubic-bezier(.22, 1, .36, 1), color .2s ease; }
+  .service-foot svg, .hero-bottom a svg, .back-top svg { transition: transform .25s cubic-bezier(.22, 1, .36, 1); }
+  .service:hover .service-foot svg, .hero-bottom a:hover svg { transform: translateY(4px); }
+  .back-top:hover svg { transform: translateY(-3px); }
+  .principles-list article { transition: padding-left .25s ease, border-color .25s ease; }
+  .principles-list article:hover { padding-left: 8px; border-color: rgba(255, 82, 103, .52); }
+  .principles-list article:hover .principle-index { color: white; }
+}
+
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .72s ease var(--reveal-delay, 0ms), transform .72s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 @media (max-width: 600px) {
   .consent-banner { right: 12px; bottom: 12px; width: calc(100% - 24px); padding: 16px; }
   .consent-actions { flex-direction: column-reverse; }
@@ -336,6 +354,13 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
         <a href="#essencia">A Vulquim</a>
         <a href="#atuacao">O que criamos</a>
         <a href="#principios">Como pensamos</a>
+        <details class="nav-projects">
+          <summary>Projetos em desenvolvimento</summary>
+          <div class="nav-projects-menu">
+            <a href="kerva.html">Kerva <span>finanças em construção</span></a>
+            <a href="handos.html">HandOS <span>operação no ritmo certo</span></a>
+          </div>
+        </details>
       </nav>
       <span class="header-note">MOBILE <span aria-hidden="true">/</span> SAAS</span>
     </div>
@@ -613,5 +638,6 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 })();
 
 </script>
+<script src="site-interactions.js"></script>
 </body>
 </html>
