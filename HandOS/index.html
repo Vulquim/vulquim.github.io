@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../projetos.css">
 </head>
-<body class="project-page project-handos">
+<body class="project-page project-handos" data-page="handos">
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
   <header class="site-header">
@@ -40,6 +40,16 @@
         </details>
       </nav>
       <span class="header-note">HANDOS <span aria-hidden="true">/</span> VULQUIM</span>
+      <div class="language-switcher">
+        <label for="language-select">Idioma</label>
+        <select id="language-select" data-language-select aria-label="Selecionar idioma">
+          <option value="pt-BR">Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="zh-CN">中文</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -128,7 +138,7 @@
       const mobile = window.matchMedia('(max-width: 760px)');
       const setMenu = (open) => {
         button.setAttribute('aria-expanded', String(open));
-        button.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        button.setAttribute('aria-label', window.vulquimI18n ? window.vulquimI18n.t(open ? 'menu.close' : 'menu.open') : (open ? 'Fechar menu' : 'Abrir menu'));
         menu.classList.toggle('is-open', open);
       };
       button.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
@@ -138,5 +148,6 @@
     })();
   </script>
   <script src="../site-interactions.js"></script>
+  <script src="../site-language.js"></script>
 </body>
 </html>

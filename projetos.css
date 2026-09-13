@@ -102,6 +102,43 @@
   text-transform: uppercase;
 }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.language-switcher label {
+  color: var(--muted, #a6adb9);
+  font: .6875rem/1.4 var(--mono, Consolas, monospace);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.language-switcher select {
+  min-height: 40px;
+  max-width: 132px;
+  padding: 8px 27px 8px 10px;
+  border: 1px solid var(--line, rgba(190, 215, 241, .18));
+  border-radius: 3px;
+  color: var(--text, #f4f5f6);
+  background: var(--surface, #0a223b);
+  font: .75rem/1.2 var(--font, "Segoe UI", Arial, sans-serif);
+  cursor: pointer;
+}
+
+.language-switcher select:focus-visible {
+  outline: 2px solid var(--red-light, #ff5267);
+  outline-offset: 4px;
+}
+
+.project-page .language-switcher select {
+  border-color: var(--project-line);
+  color: var(--project-text);
+  background: var(--project-surface);
+}
+
 /* Project pages */
 
 .project-page {
@@ -509,6 +546,11 @@ body.is-leaving::after {
 }
 
 @media (max-width: 760px) {
+  .language-switcher { order: 2; margin-left: auto; }
+  .main-nav { order: 3; }
+  .language-switcher label { display: none; }
+  .language-switcher select { min-height: 44px; max-width: 120px; }
+
   .main-nav .nav-projects-menu {
     position: static;
     width: 100%;

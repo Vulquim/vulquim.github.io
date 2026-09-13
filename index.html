@@ -339,7 +339,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 </style>
   
 </head>
-<body>
+<body data-page="home">
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
   <header class="site-header">
@@ -363,6 +363,16 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
         </details>
       </nav>
       <span class="header-note">MOBILE <span aria-hidden="true">/</span> SAAS</span>
+      <div class="language-switcher">
+        <label for="language-select">Idioma</label>
+        <select id="language-select" data-language-select aria-label="Selecionar idioma">
+          <option value="pt-BR">Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="zh-CN">中文</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -494,7 +504,7 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 
   function setMenu(open, returnFocus = false) {
     menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    menuButton.setAttribute('aria-label', window.vulquimI18n ? window.vulquimI18n.t(open ? 'menu.close' : 'menu.open') : (open ? 'Fechar menu' : 'Abrir menu'));
     menu.classList.toggle('is-open', open);
     if (returnFocus) menuButton.focus();
   }
@@ -639,5 +649,6 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
 
 </script>
 <script src="site-interactions.js"></script>
+<script src="site-language.js"></script>
 </body>
 </html>
