@@ -237,6 +237,43 @@
 
 .project-page .project-main { overflow: hidden; }
 
+.project-page .project-identity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.project-page .project-identity-icon {
+  width: 62px;
+  height: 62px;
+  padding: 13px;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 48%, var(--project-line));
+  background: color-mix(in srgb, var(--project-accent) 8%, var(--project-surface));
+  object-fit: contain;
+}
+
+.project-page .project-identity-icon-handos {
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.project-page .project-identity-wordmark {
+  width: min(235px, 52vw);
+  height: auto;
+  max-height: 42px;
+  object-fit: contain;
+}
+
+.project-page .project-identity-name {
+  color: var(--project-text);
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -.035em;
+}
+
 .project-page .project-hero {
   position: relative;
   isolation: isolate;
@@ -263,6 +300,22 @@
 
 .project-kerva .project-hero::before {
   background: radial-gradient(ellipse at 75% 35%, rgba(255, 113, 23, .28), transparent 39%), linear-gradient(130deg, transparent 45%, rgba(246, 104, 19, .09) 45%, transparent 66%);
+}
+
+.project-kerva .project-main {
+  position: relative;
+  isolation: isolate;
+}
+
+.project-kerva .kerva-grafismo {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  min-height: 100%;
+  opacity: .13;
+  pointer-events: none;
+  background: url("Kerva/kerva-grafismo.svg") right 5% top 110px / min(920px, 72vw) auto no-repeat;
+  transform: rotate(-8deg) scale(1.08);
 }
 
 .project-handos {
@@ -371,6 +424,8 @@
 
 .hero-art-label { position: absolute; z-index: 2; top: 40px; left: 42px; color: var(--project-muted); font: .6875rem Consolas, monospace; letter-spacing: .1em; }
 .hero-art-mark { position: absolute; z-index: 1; inset: 50% auto auto 50%; color: var(--project-accent); font-size: clamp(10rem, 19vw, 18rem); font-weight: 700; letter-spacing: -.15em; line-height: .7; transform: translate(-50%, -45%); text-shadow: 14px 18px 0 color-mix(in srgb, var(--project-accent) 16%, transparent); }
+.hero-art-mark-image { position: absolute; z-index: 1; top: 50%; left: 50%; width: min(44%, 230px); height: auto; transform: translate(-50%, -45%); filter: drop-shadow(14px 18px 0 color-mix(in srgb, var(--project-accent) 16%, transparent)); }
+.hero-art-mark-image-handos { width: min(56%, 250px); border-radius: 50%; }
 .hero-art-index { position: absolute; z-index: 2; right: 42px; bottom: 40px; color: var(--project-accent-soft); font: .75rem Consolas, monospace; letter-spacing: .08em; }
 .hero-art-corner { position: absolute; z-index: 2; top: 40px; right: 42px; width: 34px; height: 34px; border-top: 2px solid var(--project-accent); border-right: 2px solid var(--project-accent); }
 
@@ -483,6 +538,9 @@ body.is-leaving::after {
   .project-page .nav-projects summary { border-top-color: var(--project-line); }
   .project-page .main-nav .nav-projects-menu a { border-top-color: var(--project-line); }
   .project-hero-inner { display: block; min-height: 0; padding-block: 52px 62px; }
+  .project-page .project-identity { margin-bottom: 24px; }
+  .project-page .project-identity-icon { width: 56px; height: 56px; padding: 11px; }
+  .project-page .project-identity-wordmark { width: min(205px, 58vw); }
   .project-hero h1 { font-size: clamp(3.5rem, 16vw, 6rem); }
   .project-lead { margin-top: 24px; font-size: 1rem; }
   .project-meta { margin-top: 26px; }
