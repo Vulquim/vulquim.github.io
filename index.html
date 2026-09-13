@@ -93,6 +93,7 @@ svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width:
 .text-link svg { width: 17px; height: 17px; }
 .hero-art { position: relative; align-self: stretch; min-width: 0; display: flex; align-items: center; justify-content: center; margin: -80px -80px -20px -8px; }
 .hero-flame { width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 0 36px rgba(239, 0, 47, .06)); }
+.hero-flame-picture { display: block; width: 100%; }
 .motion-link { position: absolute; right: 86px; bottom: -3px; display: flex; align-items: center; gap: 12px; padding: 12px 0; background: none; border: 0; font-size: .875rem; text-align: left; }
 .motion-link small { display: block; font-size: .75rem; color: var(--muted); margin-top: 4px; }
 .play-circle { border: 1px solid rgba(190, 205, 228, .3); border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; transition: border-color .2s, background .2s; }
@@ -389,7 +390,10 @@ h2 { font-size: clamp(2rem, 3.5vw, 3.125rem); letter-spacing: -.044em; font-weig
           </div>
         </div>
         <div class="hero-art">
-          <img class="hero-flame" src="vulquim-asset-3-cutout-final.png" alt="Símbolo da Vulquim: uma chama vermelha formada por fitas entrelaçadas e conexões de circuitos." width="1271" height="1237" fetchpriority="high" decoding="async">
+          <picture class="hero-flame-picture">
+            <source media="(prefers-reduced-motion: reduce)" srcset="vulquim-asset-3-cutout-final.png" width="1271" height="1237">
+            <img class="hero-flame" src="vulquim-chama-animada.gif" alt="Símbolo da Vulquim: uma chama vermelha formada por fitas entrelaçadas e conexões de circuitos." width="800" height="800" fetchpriority="high" decoding="async">
+          </picture>
           <a class="motion-link" href="vulquim-asset-4.mp4" data-open-film>
             <span class="play-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 6 9 6-9 6Z"/></svg></span>
             <span>A marca em movimento<small>Assista à animação</small></span>

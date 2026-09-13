@@ -4,6 +4,8 @@
 
 **Frequência:** todos os dias, por volta de 12:00, no fuso `America/Sao_Paulo`.
 
+**Mudança de arquitetura observada em 13/09/2026:** a publicação está atrás de um proxy Cloudflare (`Server: cloudflare`) e injeta um beacon do Cloudflare Insights no HTML entregue. A auditoria passa a tratar o edge/proxy como superfície separada do checkout e do GitHub Pages.
+
 **Regra de conclusão:** a rotina só pode ser marcada como concluída quando todos os itens aplicáveis tiverem evidência atual; itens não verificáveis devem ficar explicitamente como `BLOQUEADO` ou `NÃO VERIFICADO`, nunca como concluídos. Correções seguras e necessárias devem ser aplicadas, validadas e, quando autorizadas, publicadas.
 
 ## Estados permitidos
@@ -17,13 +19,13 @@
 
 ## 1. Alinhamento interno, remoto e publicado
 
-| Item | Evidência diária | Estado atual (10/09/2026) |
+| Item | Evidência diária | Estado atual (13/09/2026) |
 |---|---|---|
 | Diretório interno correto | `git rev-parse --show-toplevel` e `git status --short --branch` | `OK` para o checkout; existem arquivos locais não rastreados preexistentes. |
-| Commit local versus remoto | `git rev-parse HEAD` e `git ls-remote origin HEAD` | `OK` pós-publicação: ambos em `4ae48a2...`. Revalidar após cada publicação. |
+| Commit local versus remoto | `git rev-parse HEAD` e `git ls-remote origin HEAD` | `OK` nesta rodada: local e `origin/main` confirmados em `1438814c090ff0c7d42dc7350e5667deacf6b535`. Revalidar após cada publicação. |
 | Alterações locais | `git status --short`; separar arquivos do ciclo dos arquivos do usuário | `ATENÇÃO`: nunca apagar, resetar ou incluir arquivos fora do escopo. |
-| Repositório remoto | API/console do GitHub: nome, visibilidade, branch padrão, Pages e último push | `ATENÇÃO`: remoto público e Pages habilitado; revisar exposição de cada arquivo. |
-| Conteúdo publicado versus remoto | comparar hash/ETag/`Last-Modified` da página publicada com o commit remoto | `OK` nesta rodada: HTML publicado contém o banner e o gate de consentimento do commit `4ae48a2`. Revalidar após cada deploy. |
+| Repositório remoto | API/console do GitHub: nome, visibilidade, branch padrão, Pages e último push | `OK` parcial: API pública confirma repositório público, branch padrão `main`, último commit `1438814...` e deployment `github-pages`; controles administrativos continuam separados. |
+| Conteúdo publicado versus remoto | comparar hash/ETag/`Last-Modified` da página publicada com o commit remoto | `ATENÇÃO`: rotas publicadas correspondem ao conteúdo rastreado do `HEAD`, mas o Cloudflare injeta o beacon antes de `</body>`; a alteração local do GIF não está publicada. Revalidar após cada deploy. |
 | Domínio canônico | conferir `CNAME`, homepage do GitHub, DNS e redirects | `ATENÇÃO`: `CNAME` usa `www.vulquim.com.br`; o README ainda menciona `vulquim.com.br`. |
 
 ## 2. Auditoria online do domínio
@@ -40,10 +42,10 @@ Executar para o domínio canônico, o domínio alternativo e o endereço GitHub 
 | Recursos do navegador | `Permissions-Policy` mínima | `ATENÇÃO`: ausente na resposta observada. |
 | CSP | CSP compatível com o HTML, script local e Analytics somente após consentimento | `ATENÇÃO`: ausente na resposta observada; definir depois de validar o carregamento de terceiros. |
 | CORS | `Access-Control-Allow-Origin` não deve ser aberto sem necessidade | `ATENÇÃO`: `*` foi observado; reavaliar se a hospedagem realmente precisa desse header. |
-| Exposição de servidor | evitar versão, debug, stack trace e headers desnecessários | `ATENÇÃO`: `Server: GitHub.com` aparece; não revelou versão, mas deve ser acompanhado. |
-| Arquivos de segurança | `/.well-known/security.txt` existe e aponta canal controlado; `robots.txt` é intencional | `ATENÇÃO`: ambos retornaram `404` no domínio publicado. |
-| Conteúdo publicado | não há secrets, source maps inesperados, painéis, APIs ou URLs internas | `OK` na página observada; repetir em cada rota nova. |
-| Dependências externas | cada terceiro tem finalidade aprovada, origem esperada e controle de integridade/política | `ATENÇÃO`: `gtag.js` é terceiro; agora deve ser carregado somente após decisão de privacidade. |
+| Exposição de servidor | evitar versão, debug, stack trace e headers desnecessários | `ATENÇÃO`: `Server: cloudflare` aparece; não revelou versão, mas confirma proxy intermediário a acompanhar. |
+| Arquivos de segurança | `/.well-known/security.txt` existe e aponta canal controlado; `robots.txt` é intencional | `ATENÇÃO`: `robots.txt` retorna `200` gerado pelo Cloudflare; `/.well-known/security.txt` retorna `404`. |
+| Conteúdo publicado | não há secrets, source maps inesperados, painéis, APIs ou URLs internas | `ATENÇÃO`: não há secrets/source maps/painéis no HTML observado, mas o edge injeta um beacon externo não presente no checkout. |
+| Dependências externas | cada terceiro tem finalidade aprovada, origem esperada e controle de integridade/política | `BLOQUEADO`: o `gtag.js` do checkout respeita o aceite, porém o beacon Cloudflare Insights é injetado fora desse gate; requer decisão/configuração no edge. |
 
 ## 3. Auditoria offline do checkout
 
@@ -57,7 +59,7 @@ Executar para o domínio canônico, o domínio alternativo e o endereço GitHub 
 | Source maps/debug | procurar `.map`, banners, stack trace, logs e flags de debug | `OK` no checkout revisado. |
 | Dependências/supply chain | procurar `package.json`, lockfiles, workflows e scripts de build | `NÃO APLICÁVEL`: site sem build e sem dependências versionadas. |
 | Headers no código | procurar CSP, HSTS, X-Frame-Options, nosniff, Referrer-Policy e Permissions-Policy | `ATENÇÃO`: não há configuração no repositório; confirmar na publicação. |
-| Analytics | verificar carregamento, consentimento, opt-out, finalidade, retenção e PII | `CORRIGIDO`: teste local e online confirmaram zero request antes da escolha, zero após recusa e carregamento somente após aceite. Finalidade, retenção e base legal continuam dependentes da governança operacional. |
+| Analytics | verificar carregamento, consentimento, opt-out, finalidade, retenção e PII | `ATENÇÃO`: o gate local do Google Analytics permanece condicionado à escolha, mas a publicação injeta Cloudflare Insights fora do gate; finalidade, retenção, base legal e opt-out precisam ser confirmados no edge. |
 | LGPD | finalidade, base legal, transparência, minimização, retenção, opt-out e operador | `NÃO VERIFICADO`: a parte operacional/jurídica não está no checkout. |
 | ECA | verificar se há coleta ou recurso destinado/acessível a crianças/adolescentes | `NÃO APLICÁVEL` ao conteúdo atual sem formulário; reavaliar se houver coleta ou perfilamento. |
 
