@@ -277,18 +277,21 @@
 .project-page .project-identity {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
   margin-bottom: 28px;
 }
 
 .project-page .project-identity-icon {
   width: 62px;
   height: 62px;
-  padding: 13px;
-  border: 1px solid color-mix(in srgb, var(--project-accent) 48%, var(--project-line));
-  background: color-mix(in srgb, var(--project-accent) 8%, var(--project-surface));
+  padding: 0;
+  border: 0;
+  background: transparent;
   object-fit: contain;
+  flex-shrink: 0;
 }
+
+.project-page .project-identity-icon-kerva { width: 42.5px; }
 
 .project-page .project-identity-icon-handos {
   padding: 0;
@@ -298,15 +301,16 @@
 }
 
 .project-page .project-identity-wordmark {
-  width: min(235px, 52vw);
-  height: auto;
-  max-height: 42px;
+  width: auto;
+  height: 42px;
+  max-width: none;
   object-fit: contain;
 }
 
 .project-page .project-identity-name {
   color: var(--project-text);
-  font-size: 1.35rem;
+  font-size: 56px;
+  line-height: 1;
   font-weight: 650;
   letter-spacing: -.035em;
 }
@@ -581,8 +585,10 @@ body.is-leaving::after {
   .project-page .main-nav .nav-projects-menu a { border-top-color: var(--project-line); }
   .project-hero-inner { display: block; min-height: 0; padding-block: 52px 62px; }
   .project-page .project-identity { margin-bottom: 24px; }
-  .project-page .project-identity-icon { width: 56px; height: 56px; padding: 11px; }
-  .project-page .project-identity-wordmark { width: min(205px, 58vw); }
+  .project-page .project-identity-icon { width: 56px; height: 56px; padding: 0; }
+  .project-page .project-identity-icon-kerva { width: 38.4px; }
+  .project-page .project-identity-wordmark { width: auto; height: 36px; }
+  .project-page .project-identity-name { font-size: 48px; }
   .project-hero h1 { font-size: clamp(3.5rem, 16vw, 6rem); }
   .project-lead { margin-top: 24px; font-size: 1rem; }
   .project-meta { margin-top: 26px; }
