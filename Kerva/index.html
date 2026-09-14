@@ -11,10 +11,12 @@
   <meta property="og:title" content="Kerva | Vulquim">
   <meta property="og:description" content="Finanças em construção, com clareza para o que entra, o que sai e o que vem depois.">
   <title>Kerva | Vulquim</title>
-  <link rel="icon" href="../favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" href="../favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="../projetos.css">
+  <link rel="stylesheet" href="../brand.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=2">
 </head>
 <body class="project-page project-kerva" data-page="kerva">
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -22,13 +24,13 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="../" aria-label="Vulquim, início">
-        <img class="brand-logo" src="../vulquim-logo-white.png" alt="Vulquim" width="900" height="369">
+        <img class="brand-logo" src="../vulquim-assinatura.webp" alt="Vulquim" width="1983" height="793">
       </a>
       <button class="menu-toggle" type="button" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menu">
         <span class="menu-toggle-text">Menu</span><span class="menu-lines" aria-hidden="true"></span>
       </button>
       <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
-        <a href="../index.html#essencia">A Vulquim</a>
+        <a href="../index.html#essencia">A <span class="brand-wordmark-wrap" data-brand-text="Vulquim"><img class="brand-wordmark" src="../vulquim-wordmark.png" alt="Vulquim" decoding="async"></span></a>
         <a href="../index.html#atuacao">O que criamos</a>
         <a href="../index.html#principios">Como pensamos</a>
         <details class="nav-projects" open>
@@ -39,7 +41,7 @@
           </div>
         </details>
       </nav>
-      <span class="header-note">KERVA <span aria-hidden="true">/</span> VULQUIM</span>
+      <span class="header-note">KERVA <span aria-hidden="true">/</span> <span class="brand-wordmark-wrap" data-brand-text="VULQUIM"><img class="brand-wordmark" src="../vulquim-wordmark.png" alt="Vulquim" decoding="async"></span></span>
       <div class="language-switcher">
         <label for="language-select">Idioma</label>
         <select id="language-select" data-language-select aria-label="Selecionar idioma">
@@ -123,10 +125,10 @@
   <footer class="project-footer">
     <div class="project-section-inner">
       <div class="project-footer-main">
-        <p>Kerva é um produto Vulquim.</p>
+        <p>Kerva é um produto <span class="brand-wordmark-wrap" data-brand-text="Vulquim"><img class="brand-wordmark" src="../vulquim-wordmark.png" alt="Vulquim" decoding="async"></span>.</p>
         <a class="project-back" href="../index.html#atuacao">Voltar para o que criamos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
-      <div class="project-footer-bottom"><span>© 2026 VULQUIM</span><span>IDEIAS EM CONSTRUÇÃO</span><span>KERVA / 01</span></div>
+      <div class="project-footer-bottom"><span>© 2026 <span class="brand-wordmark-wrap" data-brand-text="VULQUIM"><img class="brand-wordmark" src="../vulquim-wordmark.png" alt="Vulquim" decoding="async"></span></span><span>IDEIAS EM CONSTRUÇÃO</span><span>KERVA / 01</span></div>
     </div>
   </footer>
 
@@ -149,6 +151,7 @@
     })();
   </script>
   <script src="../site-interactions.js"></script>
-  <script src="../site-language.js"></script>
+  <script src="../brand.js"></script>
+<script src="../site-language.js"></script>
 </body>
 </html>

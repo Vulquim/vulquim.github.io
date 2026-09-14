@@ -365,6 +365,7 @@
   };
 
   const applyTranslations = () => {
+    window.vulquimBrand?.restore();
     setMeta();
     applyCommon();
     if (page === 'home') applyHome();
@@ -374,6 +375,7 @@
       select.setAttribute('aria-label', value(common.languageAria));
     });
     applyMenuLabel();
+    window.vulquimBrand?.render();
   };
 
   const saveLanguage = (language) => {
