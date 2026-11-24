@@ -2,8 +2,20 @@
   'use strict';
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const flamePause = document.querySelector('.hero-flame-pause');
+  if (flamePause) {
+    const stage = flamePause.closest('.hero-flame-stage');
+    const icon = flamePause.querySelector('span');
+    flamePause.addEventListener('click', () => {
+      const paused = stage.classList.toggle('is-paused');
+      flamePause.setAttribute('aria-pressed', String(paused));
+      icon.textContent = paused ? '▶' : 'Ⅱ';
+    });
+    flamePause.hidden = false;
+    stage.classList.add('is-looping');
+  }
   const revealTargets = document.querySelectorAll([
-    '.hero-copy', '.hero-art', '.hero-bottom',
+    '.hero-copy', '.hero-bottom',
     '.section-label', '.section-intro', '.service',
     '.essence-intro', '.name-composition', '.origins article', '.essence-statement',
     '.principles-heading', '.principles-list article', '.footer-main', '.footer-bottom',

@@ -1,1 +1,48 @@
-.project-sonetom{--project-bg:#10091e;--project-surface:#1c1230;--project-accent:#c09aff;--project-accent-soft:#9b65ff;--project-muted:#c1b6d2;--project-line:#49365e;--red:#ac6bff;--red-light:#e0baff}.demo-cta{text-align:center}.demo-cta p{margin:1rem auto 1.6rem;max-width:40rem}.demo-cta .demo-button{display:inline-block;padding:1rem 2.8rem;border-radius:6px;background:#b58aff;color:#160b24;font-weight:700}.demo-button:hover,.demo-button:focus-visible{background:#e0caff;outline:2px solid white;outline-offset:4px}
+.project-sonetom {
+  --project-bg: #10091e;
+  --project-surface: #1c1230;
+  --project-accent: #c09aff;
+  --project-accent-soft: #9b65ff;
+  --project-muted: #c1b6d2;
+  --project-line: #49365e;
+  --red: #ac6bff;
+  --red-light: #e0baff;
+}
+
+.project-sonetom .demo-cta {
+  text-align: center;
+  background: linear-gradient(145deg, #1c1230, var(--project-bg));
+}
+
+.demo-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1.05;
+}
+
+.demo-cta p {
+  max-width: 38rem;
+  margin: 1rem auto 1.6rem;
+  color: var(--project-muted);
+}
+
+.demo-cta .demo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: .75rem 2rem;
+  border-radius: 6px;
+  background: var(--project-accent);
+  color: #160b24;
+  font-weight: 700;
+}
+
+.demo-cta .demo-button:hover,
+.demo-cta .demo-button:focus-visible {
+  background: #e0caff;
+}
+
+.demo-cta .demo-button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}

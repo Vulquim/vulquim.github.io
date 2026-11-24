@@ -1,0 +1,48 @@
+.institutional-page {
+  margin: 0;
+  color: #f4f5f8;
+  background: #0a1424;
+  font: 1rem/1.7 system-ui, sans-serif;
+}
+.institutional-page a, .institutional-links a { color: inherit; text-underline-offset: .22em; }
+.institutional-page a:hover, .institutional-links a:hover { color: #ff849b; }
+.institutional-page a:focus-visible, .institutional-links a:focus-visible {
+  outline: 2px solid #ff849b;
+  outline-offset: 4px;
+}
+.institutional-header, .institutional-main, .institutional-footer {
+  width: min(100% - 36px, 860px);
+  margin-inline: auto;
+}
+.institutional-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-block: 20px;
+  border-bottom: 1px solid #344256;
+}
+.institutional-header img { display: block; height: auto; }
+.institutional-main { padding-block: clamp(32px, 7vw, 80px); }
+.institutional-main h1 {
+  margin: 0 0 22px;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+.institutional-main section { max-width: 72ch; margin-top: 28px; }
+.institutional-main h2 { font-size: 1.25rem; margin-bottom: 7px; }
+.institutional-main p, .institutional-main ul { margin: 0 0 10px; color: #c6cfdc; }
+.institutional-date { font-size: .875rem; }
+.institutional-footer, .institutional-links { padding-block: 20px; border-top: 1px solid #344256; color: #c6cfdc; }
+.institutional-footer ul, .institutional-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  font-size: .875rem;
+}
+.institutional-links p { margin: 0 0 6px; }
+.institutional-links a, .contact-privacy a { text-decoration: underline; }

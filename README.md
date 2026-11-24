@@ -2,7 +2,7 @@
 
 Site institucional da Vulquim (antiga Vurno Dev): apresentação da marca, do que a empresa desenvolve e canal de contato.
 
-Publicado em: **https://vulquim.com.br** (via GitHub Pages, repositório `vulquim.github.io`)
+Publicado em: **https://vulquim.com.br** (via Cloudflare Pages, repositório `vulquim.github.io`)
 
 ## O que tem aqui
 
@@ -30,12 +30,11 @@ Depois abra `http://localhost:8000` no navegador. `Ctrl+C` no terminal pra parar
 
 ## Como publicar uma alteração
 
-O site é servido pelo GitHub Pages a partir do repositório `vulquim.github.io`. Qualquer mudança só aparece no ar depois de duas coisas:
+A produção usa o projeto `site-vulquim` no Cloudflare Pages, com a branch `main`. O repositório GitHub registra as versões publicadas. O envio ao GitHub e o deploy no Cloudflare são operações distintas.
 
-1. Editar os arquivos aqui (nessa pasta).
-2. Enviar (`commit` + `push`) essas mudanças pro repositório `vulquim.github.io` no GitHub.
+No PowerShell, execute `./publicar.ps1 -SomentePreparar` para gerar a pasta `dist` com os arquivos públicos. Para enviar a versão ao Cloudflare Pages, use `./publicar.ps1` com o Wrangler autenticado na conta do projeto.
 
-Sem o passo 2, a mudança fica só na sua máquina — o site publicado continua com a versão antiga.
+A degustação do Sonetom vem do build de `web/dist` da branch `demo-web` no repositório Sonetom. Atualize `Sonetom/demo` com o conteúdo do novo build antes de publicar uma nova versão da degustação.
 
 ## Identidade visual
 

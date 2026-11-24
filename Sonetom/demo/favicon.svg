@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title">
+  <title id="title">Sonetom · Vulquim</title>
+  <defs>
+    <linearGradient id="stem" x1=".1" y1=".9" x2=".63" y2=".06">
+      <stop stop-color="#002fff"/>
+      <stop offset=".33" stop-color="#2411a1"/>
+      <stop offset=".65" stop-color="#5e00ed"/>
+      <stop offset=".95" stop-color="#ff00f3"/>
+      <stop offset="1" stop-color="#ff53fa"/>
+    </linearGradient>
+    <linearGradient id="note" x1=".25" y1=".49" x2=".57" y2=".89">
+      <stop stop-color="#00f1ff"/>
+      <stop offset=".25" stop-color="#0081ef"/>
+      <stop offset=".52" stop-color="#1c01f7"/>
+      <stop offset="1" stop-color="#ff00ee"/>
+    </linearGradient>
+    <linearGradient id="noteShade" x1=".83" y1=".01" x2=".85" y2=".51">
+      <stop stop-color="#12005e" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#12005e" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1=".18" y1=".34" x2=".83" y2=".79">
+      <stop stop-color="#00eaff"/>
+      <stop offset=".19" stop-color="#0064ff"/>
+      <stop offset=".44" stop-color="#1800f7"/>
+      <stop offset=".67" stop-color="#8e00ef"/>
+      <stop offset=".91" stop-color="#ff00f0"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1=".55" x2="1" y2=".42">
+      <stop stop-color="#67faff"/>
+      <stop offset=".22" stop-color="#f2ffff"/>
+      <stop offset=".48" stop-color="#a0eaff"/>
+      <stop offset=".68" stop-color="#fb7dff"/>
+      <stop offset=".89" stop-color="#fff"/>
+      <stop offset="1" stop-color="#ff6ff7"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#00c9eb"/>
+      <stop offset=".47" stop-color="#00ebff"/>
+      <stop offset="1" stop-color="#0637f0"/>
+    </linearGradient>
+    <linearGradient id="transition" gradientUnits="userSpaceOnUse" x1="312" y1="544" x2="348" y2="768">
+      <stop stop-color="#00dbfa"/>
+      <stop offset=".6" stop-color="#5165f9"/>
+      <stop offset="1" stop-color="#2122ed"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#a649ff"/>
+      <stop offset=".34" stop-color="#de00fb"/>
+      <stop offset="1" stop-color="#5500df"/>
+    </linearGradient>
+    <linearGradient id="waveRight" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#ff00ef"/>
+      <stop offset=".5" stop-color="#f600ed"/>
+      <stop offset="1" stop-color="#7700e9"/>
+    </linearGradient>
+    <path id="noteShape" d="M631 577l71 30v324c0 99-92 181-205 214-112 33-220 4-244-66-25-71 42-183 147-240 78-42 164-47 231-9Z"/>
+  </defs>
+  <g transform="translate(-26 -20)">
+    <g fill="none" stroke-width="36" stroke-linecap="round">
+      <path stroke="url(#wave)" d="M79 652v17m47-43v66m47-98v121m50-169v208m54-249v291"/>
+      <path stroke="url(#transition)" d="M330 562v188"/>
+      <path stroke="url(#pulse)" d="M386 604v114m57-89v67m54-48v28"/>
+      <path stroke="url(#waveRight)" d="M925 575v152m51-220v288m53-248v205m53-161v126m51-93v63m46-32v4"/>
+    </g>
+    <circle cx="548" cy="663" r="18" fill="#7900ee"/>
+    <path fill="url(#stem)" stroke="url(#rim)" stroke-width="7" d="M661 470V145c0-38 35-63 69-50l65 27c21 9 33 25 33 47v386Z"/>
+    <path fill="none" stroke="url(#rim)" stroke-width="15" stroke-linecap="round" d="M667 473V145c0-32 30-53 61-42l65 27c18 8 28 22 28 41v376" opacity=".8"/>
+    <use href="#noteShape" fill="url(#note)" stroke="url(#rim)" stroke-width="7"/>
+    <use href="#noteShape" fill="url(#noteShade)"/>
+    <path fill="none" stroke="url(#rim)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" d="M638 599v235c-67-33-151-28-233 14-102 53-171 161-146 229 23 63 121 93 238 59 112-33 198-111 198-209V644" opacity=".91"/>
+    <path fill="url(#ribbon)" d="M658 189c-132 36-246 118-268 204-23 94 87 151 221 208 120 51 189 100 194 175 5 64-47 119-104 172 111-57 197-156 195-247-3-115-120-189-271-251-82-34-112-67-112-109 0-55 75-116 145-152Z"/>
+    <path fill="url(#rim)" opacity=".88" d="M658 189c-132 36-246 118-268 204-23 94 87 151 221 208 120 51 189 100 194 175 5 64-47 119-104 172 68-46 131-112 122-179-10-83-85-135-205-187-122-53-225-110-197-196 24-76 122-151 237-197Z"/>
+    <path fill="url(#rim)" d="M513 341c0 42 30 75 112 109 151 62 268 136 271 251 2 91-84 190-195 247 105-63 179-157 176-246-3-102-107-176-257-245-77-35-109-66-107-116Z"/>
+  </g>
+</svg>

@@ -20,6 +20,7 @@
     projects: tr('Projetos em desenvolvimento', 'Projects in development', 'Proyectos en desarrollo', '开发中的项目', '開発中のプロジェクト'),
     kervaNav: tr('finanças em construção', 'finances in progress', 'finanzas en construcción', '财务建设中', '構築中の財務'),
     handosNav: tr('operação no ritmo certo', 'operations at the right pace', 'operación al ritmo justo', '以合适节奏运营', 'ちょうどいいリズムの運用'),
+    sonetomNav: tr('estúdio de áudio', 'audio studio', 'estudio de audio', '音频工作室', 'オーディオスタジオ'),
     language: tr('Idioma', 'Language', 'Idioma', '语言', '言語'),
     languageAria: tr('Selecionar idioma', 'Select language', 'Seleccionar idioma', '选择语言', '言語を選択'),
     backToProjects: tr('Voltar para o que criamos', 'Back to what we create', 'Volver a lo que creamos', '返回我们创造的产品', 'つくっているものに戻る')
@@ -50,7 +51,7 @@
       '我们开发移动端和 SaaS 软件，将真实需求转化为日常解决方案。',
       '現実のニーズを日々の解決策へ変える、モバイルとSaaSのソフトウェアを開発しています。'
     ),
-    createButton: tr('Conheça o que criamos', 'Discover what we create', 'Conoce lo que creamos', '了解我们创造的产品', 'つくっているものを見る'),
+    heroContact: tr('Entre em contato com a gente', 'Get in touch with us', 'Ponte en contacto con nosotros', 'お問い合わせください', '문의해 주세요'),
     essenceLink: tr('A essência da Vulquim', 'The essence of Vulquim', 'La esencia de Vulquim', 'Vulquim 的本质', 'Vulquimの本質'),
     flameAlt: tr(
       'Símbolo da Vulquim: uma chama vermelha formada por fitas entrelaçadas e conexões de circuitos.',
@@ -169,6 +170,80 @@
       roadmapLabel: tr('Etapas atuais do projeto HandOS', 'Current stages of the HandOS project', 'Etapas actuales del proyecto HandOS', 'HandOS 项目当前阶段', 'HandOSプロジェクトの現在の段階'),
       steps: [[tr('01 / agora', '01 / now', '01 / ahora', '01 / 现在', '01 / 今'), tr('Núcleo protegido', 'Protected core', 'Núcleo protegido', '受保护的核心', '守られたコア'), tr('Base local, dados e controles essenciais para a operação.', 'Local foundation, data and essential controls for operations.', 'Base local, datos y controles esenciales para la operación.', '运营所需的本地基础、数据和核心控制。', '業務に必要なローカル基盤、データ、基本コントロール。')], [tr('02 / em seguida', '02 / next', '02 / después', '02 / 接下来', '02 / 次に'), tr('Fluxos de campo', 'Field workflows', 'Flujos de campo', '现场流程', '現場フロー'), tr('Rotinas objetivas para acompanhar o trabalho sem atrito.', 'Clear routines to follow the work without friction.', 'Rutinas objetivas para acompañar el trabajo sin fricción.', '用清晰流程无阻碍地跟进工作。', '仕事を無理なく追える、明快な現場ルーティン。')], [tr('03 / depois', '03 / later', '03 / más adelante', '03 / 之后', '03 / その後'), tr('Ritmo contínuo', 'Continuous rhythm', 'Ritmo continuo', '持续节奏', '続くリズム'), tr('Refinamento a partir do uso real e das necessidades do time.', 'Refinement based on real use and the team’s needs.', 'Perfeccionamiento a partir del uso real y las necesidades del equipo.', '根据真实使用和团队需求持续完善。', '実際の利用とチームのニーズから磨き上げる。')]],
       footer: tr('HandOS é um produto Vulquim.', 'HandOS is a Vulquim product.', 'HandOS es un producto de Vulquim.', 'HandOS 是 Vulquim 的产品。', 'HandOSはVulquimのプロダクトです。')
+    },
+    sonetom: {
+      title: tr('Sonetom | Vulquim', 'Sonetom | Vulquim', 'Sonetom | Vulquim', 'Sonetom | Vulquim', 'Sonetom | Vulquim'),
+      descriptionMeta: tr("Sonetom: um projeto Vulquim para gravar, editar e mixar áudio.", "Sonetom: a Vulquim project for recording, editing and mixing audio.", "Sonetom: un proyecto de Vulquim para grabar, editar y mezclar audio.", "Sonetom 是 Vulquim 的录音、编辑和混音项目。", "Sonetomは録音、編集、ミキシングのためのVulquimのプロジェクトです。"),
+      ogDescription: tr("Um estúdio de áudio multipista para experimentar, gravar e mixar.", "A multitrack audio studio to experiment, record and mix.", "Un estudio de audio multipista para experimentar, grabar y mezclar.", "用于探索、录音和混音的多轨音频工作室。", "試作、録音、ミキシングができるマルチトラックスタジオ。"),
+      kicker: tr("PROJETO 03 / EM DESENVOLVIMENTO", "PROJECT 03 / IN DEVELOPMENT", "PROYECTO 03 / EN DESARROLLO", "项目 03 / 开发中", "プロジェクト 03 / 開発中"),
+      heroTitle: tr("Sonetom<span>seu som, sua identidade.</span>", "Sonetom<span>your sound, your identity.</span>", "Sonetom<span>tu sonido, tu identidad.</span>", "Sonetom<span>你的声音，你的风格。</span>", "Sonetom<span>あなたの音、あなたらしさ。</span>"),
+      lead: tr("Um estúdio de áudio multipista para gravar, experimentar ritmos e construir mixagens diretamente no dispositivo.", "A multitrack audio studio to record, explore rhythms and build mixes directly on your device.", "Un estudio multipista para grabar, probar ritmos y crear mezclas en tu dispositivo.", "在设备上直接录音、探索节奏并制作混音的多轨工作室。", "端末上で録音し、リズムを試し、ミックスを作れるマルチトラックスタジオ。"),
+      inDevelopment: tr("Em construção", "In development", "En desarrollo", "开发中", "開発中"),
+      artAlt: tr("Painel visual do projeto Sonetom", "Visual panel for the Sonetom project", "Panel visual del proyecto Sonetom", "Sonetom 项目视觉展示", "Sonetomのビジュアルパネル"),
+      artIndex: tr("VOZ / MIXAGEM", "VOICE / MIXING", "VOZ / MEZCLA", "人声 / 混音", "ボーカル / ミキシング"),
+      directionLabel: tr("A direção", "The direction", "La dirección", "项目方向", "目指すもの"),
+      directionTitle: tr("Crie seu som.<br><span>Explore sua voz.</span>", "Create your sound.<br><span>Explore your voice.</span>", "Crea tu sonido.<br><span>Explora tu voz.</span>", "创造你的声音。<br><span>探索你的嗓音。</span>", "自分の音をつくる。<br><span>声の可能性を探る。</span>"),
+      directionIntro: tr("Sonetom aproxima gravação e produção musical, com controles de áudio e perfis de ritmo em uma experiência acessível.", "Sonetom brings recording and music production together with accessible audio controls and rhythm profiles.", "Sonetom une grabación y producción musical con controles de audio y perfiles rítmicos accesibles.", "Sonetom 将录音和音乐制作结合起来，提供易用的音频控制和节奏预设。", "使いやすい音声コントロールとリズム設定で、録音と音楽制作をつなげます。"),
+      cards: [
+        [
+          tr("01 / GRAVAÇÃO", "01 / RECORDING", "01 / GRABACIÓN", "01 / 录音", "01 / 録音"),
+          tr("Capture sua voz", "Capture your voice", "Captura tu voz", "录下你的声音", "声を録る"),
+          tr("Grave pelo microfone ou importe um instrumental para acompanhar sua interpretação.", "Record with your microphone or import a backing track for your performance.", "Graba con el micrófono o importa una pista instrumental para acompañarte.", "用麦克风录音，或导入伴奏来配合演唱。", "マイクで録音したり、演奏に合わせる伴奏を読み込んだりできます。")
+        ],
+        [
+          tr("02 / MIXAGEM", "02 / MIXING", "02 / MEZCLA", "02 / 混音", "02 / ミキシング"),
+          tr("Ajuste cada faixa", "Adjust each track", "Ajusta cada pista", "调整每条音轨", "トラックを調整する"),
+          tr("Explore volume, panorama, equalização, compressão e reverberação.", "Explore volume, panning, EQ, compression and reverb.", "Explora volumen, panorama, ecualización, compresión y reverberación.", "试用音量、声像、均衡、压缩和混响。", "音量、パン、EQ、コンプレッサー、リバーブを試せます。")
+        ],
+        [
+          tr("03 / RITMOS", "03 / RHYTHMS", "03 / RITMOS", "03 / 节奏", "03 / リズム"),
+          tr("Encontre seu ritmo", "Find your rhythm", "Encuentra tu ritmo", "找到你的节奏", "自分のリズムを見つける"),
+          tr("Experimente perfis de ritmo e escute a mixagem sem sair do estúdio.", "Try rhythm profiles and listen to the mix in the studio.", "Prueba perfiles rítmicos y escucha la mezcla dentro del estudio.", "试用节奏预设，在工作室内试听混音。", "リズム設定を試し、スタジオ内でミックスを聴けます。")
+        ],
+      ],
+      whereLabel: tr("Onde estamos", "Current progress", "Dónde estamos", "当前进展", "現在の進捗"),
+      whereTitle: tr("Um estúdio<br><span>em evolução.</span>", "A studio<br><span>in the making.</span>", "Un estudio<br><span>en evolución.</span>", "不断发展的<br><span>工作室。</span>", "進化を続ける<br><span>スタジオ。</span>"),
+      whereIntro: tr("O protótipo permite explorar a gravação e a mixagem. A demonstração não exige conta nem oferece exportação.", "Explore recording and mixing in this prototype. The demo runs without an account or export tools.", "Explora la grabación y la mezcla en este prototipo. La demo funciona sin cuenta ni herramientas de exportación.", "在原型中体验录音和混音。演示版无需账户，也不提供导出功能。", "試作版で録音とミキシングを試せます。デモはアカウント不要で、書き出し機能はありません。"),
+      specs: [
+        [
+          tr("Frente", "Platforms", "Plataformas", "平台", "対応環境"),
+          tr("Android e web", "Android and web", "Android y web", "Android 和网页", "Androidとウェブ")
+        ],
+        [
+          tr("Direção", "Approach", "Enfoque", "方式", "方式"),
+          tr("Processamento local", "Local processing", "Procesamiento local", "本地处理", "端末内処理")
+        ],
+        [
+          tr("Foco", "Focus", "Foco", "重点", "用途"),
+          tr("Produção de áudio", "Audio production", "Producción de audio", "音频制作", "音声制作")
+        ],
+        [
+          tr("Estado", "Status", "Estado", "状态", "状態"),
+          tr("Em desenvolvimento", "In development", "En desarrollo", "开发中", "開発中")
+        ],
+      ],
+      roadmapLabel: tr("Etapas atuais do projeto Sonetom", "Current stages of the Sonetom project", "Etapas actuales del proyecto Sonetom", "Sonetom 项目的当前阶段", "Sonetomの現在の開発段階"),
+      steps: [
+        [
+          tr("01 / agora", "01 / now", "01 / ahora", "01 / 当前", "01 / 現在"),
+          tr("Estúdio multipista", "Multitrack studio", "Estudio multipista", "多轨工作室", "マルチトラックスタジオ"),
+          tr("Gravação, reprodução e controles de faixa.", "Recording, playback and track controls.", "Grabación, reproducción y controles de pista.", "录音、播放和音轨控制。", "録音、再生、トラック操作。")
+        ],
+        [
+          tr("02 / em seguida", "02 / next", "02 / a continuación", "02 / 下一步", "02 / 次の段階"),
+          tr("Experiência musical", "Music workflow", "Experiencia musical", "音乐制作体验", "音楽制作体験"),
+          tr("Perfis de ritmo e refinamento da mixagem.", "Rhythm profiles and mix refinement.", "Perfiles rítmicos y mejoras en la mezcla.", "节奏预设和混音优化。", "リズム設定とミキシングの改善。")
+        ],
+        [
+          tr("03 / depois", "03 / later", "03 / después", "03 / 后续", "03 / その後"),
+          tr("Evolução", "Further development", "Evolución", "持续改进", "さらなる進化"),
+          tr("Novos recursos e aperfeiçoamento do processamento de áudio.", "New features and improved audio processing.", "Nuevas funciones y mejoras en el procesamiento de audio.", "增加功能并改进音频处理。", "新機能の追加と音声処理の改善。")
+        ],
+      ],
+      demoTitle: tr("Experimente o Sonetom", "Try Sonetom", "Prueba Sonetom", "试用 Sonetom", "Sonetomを試す"),
+      demoText: tr("Abra o estúdio no navegador, sem conta. As gravações ficam na sessão e o áudio pode ser ouvido no próprio estúdio.", "Open the studio in your browser without an account. Recordings stay in the session and playback is available in the studio.", "Abre el estudio en tu navegador sin cuenta. Las grabaciones se quedan en la sesión y puedes escucharlas dentro del estudio.", "无需账户即可在浏览器打开工作室。录音仅保留在当前会话中，可在工作室内试听。", "アカウント不要でブラウザーから使えます。録音はセッション中だけ保持され、スタジオ内で再生できます。"),
+      demoButton: tr("Experimente", "Try the demo", "Prueba la demo", "开始试用", "デモを試す"),
+      footer: tr("Sonetom é um produto Vulquim.", "Sonetom is a Vulquim product.", "Sonetom es un producto de Vulquim.", "Sonetom 是 Vulquim 的产品。", "SonetomはVulquimの製品です。"),
     }
   };
 
@@ -245,9 +320,9 @@
     setText('.main-nav > a:nth-of-type(2)', common.navCreate);
     setText('.main-nav > a:nth-of-type(3)', common.navThink);
     setText('.nav-projects summary', common.projects);
-    document.querySelectorAll('.nav-projects-menu a').forEach((link) => {
-      const label = link.textContent.trim().toLowerCase();
-      setTextElement(link.querySelector('span'), label.startsWith('kerva') ? common.kervaNav : common.handosNav);
+    document.querySelectorAll('.nav-projects-menu [data-project] span').forEach((label) => {
+      const { project } = label.closest('[data-project]').dataset;
+      setTextElement(label, common[project + 'Nav']);
     });
     setText('.language-switcher label', common.language);
     setAttribute('.language-switcher select', 'aria-label', common.languageAria);
@@ -259,7 +334,7 @@
     setText('.hero-eyebrow', home.eyebrow, { preserveChildren: true });
     setText('#hero-title', home.heroTitle, { html: true });
     setText('.hero-description', home.heroDescription);
-    setText('.button-primary', home.createButton, { preserveChildren: true });
+    setText('[data-hero-contact]', home.heroContact);
     setText('.text-link', home.essenceLink, { preserveChildren: true });
     setAttribute('.hero-flame', 'alt', home.flameAlt);
     const motionMarkup = languages.reduce((translated, language) => {
@@ -356,6 +431,9 @@
       setTextElement(step.querySelector('h3'), stepCopy[1]);
       setTextElement(step.querySelector('p'), stepCopy[2]);
     });
+    setText('.demo-cta h2', pageCopy.demoTitle);
+    setText('.demo-cta p', pageCopy.demoText);
+    setText('.demo-button', pageCopy.demoButton);
     setText('.project-footer-main > p', pageCopy.footer);
   };
 
