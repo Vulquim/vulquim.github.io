@@ -168,7 +168,7 @@
 .project-page .skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 14px 20px; background: white; color: black; transform: translateY(-170%); }
 .project-page .skip-link:focus { transform: translateY(0); }
 .project-page button { font: inherit; }
-.project-page img { display: block; max-width: 100%; height: auto; }
+.project-page img:not(:where(.brand-wordmark)) { display: block; max-width: 100%; height: auto; }
 .project-page svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
 
 .project-page .site-header {
