@@ -6,6 +6,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $publicFiles = @(
+    '_headers'
     'index.html'
     'site-institucional.css'
     'boas-praticas/index.html'
