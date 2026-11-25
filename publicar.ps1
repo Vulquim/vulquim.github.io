@@ -18,7 +18,6 @@ $publicFiles = @(
     'sitemap.xml'
     'robots.txt'
     'brand.css'
-    'brand.js'
     'projetos.css'
     'site-contact.css'
     'site-contact.js'

@@ -14,7 +14,7 @@
     menuOpen: tr('Abrir menu', 'Open menu', 'Abrir menú', '打开菜单', 'メニューを開く'),
     menuClose: tr('Fechar menu', 'Close menu', 'Cerrar menú', '关闭菜单', 'メニューを閉じる'),
     navigation: tr('Navegação principal', 'Main navigation', 'Navegación principal', '主导航', 'メインナビゲーション'),
-    navEssence: tr('A Vulquim', 'Vulquim', 'Vulquim', 'Vulquim', 'Vulquim'),
+    navEssencePrefix: tr('A', '', '', '', ''),
     navCreate: tr('O que criamos', 'What we create', 'Lo que creamos', '我们创造的产品', 'つくっているもの'),
     navThink: tr('Como pensamos', 'How we think', 'Cómo pensamos', '我们的思考方式', '考え方'),
     projects: tr('Projetos em desenvolvimento', 'Projects in development', 'Proyectos en desarrollo', '开发中的项目', '開発中のプロジェクト'),
@@ -316,7 +316,7 @@
     setAttribute('.site-header .brand', 'aria-label', common.brandHome);
     setAttribute('.site-footer .brand', 'aria-label', common.brandBack);
     setAttribute('.main-nav', 'aria-label', common.navigation);
-    setText('.main-nav > a:nth-of-type(1)', common.navEssence);
+    setText('.nav-essence-prefix', common.navEssencePrefix);
     setText('.main-nav > a:nth-of-type(2)', common.navCreate);
     setText('.main-nav > a:nth-of-type(3)', common.navThink);
     setText('.nav-projects summary', common.projects);
@@ -443,7 +443,6 @@
   };
 
   const applyTranslations = () => {
-    window.vulquimBrand?.restore();
     setMeta();
     applyCommon();
     if (page === 'home') applyHome();
@@ -453,7 +452,6 @@
       select.setAttribute('aria-label', value(common.languageAria));
     });
     applyMenuLabel();
-    window.vulquimBrand?.render();
   };
 
   const saveLanguage = (language) => {

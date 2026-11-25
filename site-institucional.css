@@ -22,7 +22,7 @@
   padding-block: 20px;
   border-bottom: 1px solid #344256;
 }
-.institutional-header img { display: block; height: auto; }
+.institutional-header a:first-child { font-weight: 700; }
 .institutional-main { padding-block: clamp(32px, 7vw, 80px); }
 .institutional-main h1 {
   margin: 0 0 22px;
